@@ -1,0 +1,12 @@
+openai
+requests
+python-dotenv
+google-auth-oauthlib
+google-api-python-client
+pydub
+tqdm
+PySimpleGUI
+pycryptodome
+pillow
+pyinstaller
+sentence-transformers
