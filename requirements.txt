@@ -5,7 +5,7 @@ google-auth-oauthlib
 google-api-python-client
 pydub
 tqdm
-PySimpleGUI
+PySimpleGUI>=4.60.0
 pycryptodome
 pillow
 pyinstaller
