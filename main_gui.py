@@ -34,7 +34,7 @@ layout = [
             [sg.Button('Save Keys'), sg.Button('Load Keys')],
             [sg.HorizontalSeparator()],
             [sg.Text('YouTube OAuth:'), sg.Button('Connect YouTube'), sg.Text('', key='-YT-')],
-            [sg.Text('Note: Do not upload keys to GitHub. Keep client_secrets.json local for OAuth.")]
+            [sg.Text("Note: Do not upload keys to Github. Keep client_secrets.json local for OAuth.")]
         ]),
         sg.Tab('Generate', [
             [sg.Text('Topic/Keyword:'), sg.Input(key='-TOPIC-', size=(50,1)), sg.Combo(['Hindi','English','Spanish'], default_value='Hindi', key='-LANG-')],
