@@ -2,39 +2,23 @@ name: Windows Build
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+    - name: Install requirements
+      run: pip install --upgrade --extra-index-url https://PySimpleGUI.net/install -r requirements.txt
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pyinstaller
+    - name: Build executable
+      run: pyinstaller main_gui.py --onefile
 
-      - name: Install FFmpeg (choco)
-        shell: powershell
-        run: |
-          choco feature enable -n allowGlobalConfirmation
-          choco install ffmpeg -y
-
-      - name: Build executable with PyInstaller
-        run: |
-          pyinstaller --noconfirm --clean --onefile src/main_gui.py --name AIVideoMaker
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: AIVideoMaker_build
-          path: dist/AIVideoMaker.exe
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: AIVideoMaker_build
+        path: dist/main_gui.exe
